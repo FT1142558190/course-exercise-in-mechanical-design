@@ -17,10 +17,13 @@ class key():
 
     def key_size(self):
         if (key.num==1)&(self.type=='半圆普通平键'):
-            self.b=10
-            self.h=8
-            self.L=56
-            self.l=self.L-0.5*self.b
+            self.b=8
+            self.h=7
+            self.L=45
+            # self.b=10
+            # self.h=8
+            # self.L=56
+            self.l=self.L-self.b
         elif (key.num==2)&(self.type=='矩形花键'):
             self.N=8
             self.d=62
@@ -53,7 +56,7 @@ class key():
 
     def load(self):
         if self.type=='半圆普通平键':
-            self.sigma_bs=4000*self.T/(self.h*self.l*self.d)
+            self.sigma_bs=20000*self.T/(self.h*self.l*self.d)
         elif self.type=='矩形花键':
             self.sigma_bs=2000*self.T/(self.Psi*self.N*self.h*self.l*self.d_m)
         

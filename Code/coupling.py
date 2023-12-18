@@ -18,9 +18,9 @@ class coupling():
         print('\t由于联轴器在减速器的输出端，转速低，传递转矩大，')
         print('\t故选用{}'.format(self.type))
     def size_confirm(self):
-        self.K_A=1.5
+        self.K_A=1.5    #工况系数老师查1.5   13-1
         self.T_ca=self.K_A*self.T
-        self.size='LT11'
+        self.size='LT7#选40的孔'    
         self.T_avalible=6300
         self.n_avaliable=1800
         self.d_min=80

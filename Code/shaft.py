@@ -10,15 +10,16 @@ class shaft():
         self.n=n
         self.material='45'
         self.dia()
+       # print("可是我的电机直径38")
     def dia(self):
         if (shaft.num==1)&(self.material=='45'):
-            self.A0=110
+            self.A0=110    #选c的值老师选的110
             self.tau_T_avaliable=28
             self.keyhole=1
         elif (shaft.num==2)&(self.material=='45'):
-            self.A0=107
+            self.A0=110
             self.tau_T_avaliable=34
-            self.keyhole=1
+            self.keyhole=1           #一个键槽
         elif (shaft.num==3)&(self.material=='45'):
             self.A0=97
             self.tau_T_avaliable=40
@@ -28,8 +29,8 @@ class shaft():
             self.tau_T_avaliable=40
             self.keyhole=1
         self.d0=self.A0*(self.P/self.n)**(1/3)
-        self.d=ceil(self.d0*(1+0.1*self.keyhole))
-        print('对于第 {} 根轴'.format(shaft.num))
+        self.d=ceil(self.d0*(1+0.05*self.keyhole))   #扩大轴直径因为有键
+        print('对于第 {} 根轴'.format(shaft.num))    #a  e是15  4根  所以宽度
         print('\t取A_0={},[τ_T]={}MPa'.format(self.A0,self.tau_T_avaliable))
         print('\t估算轴的直径 d={}mm'.format(self.d0))
         print('\t考虑键槽的影响，扩大轴的直径')

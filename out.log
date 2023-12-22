@@ -1,5 +1,6 @@
-C:\Users\Administrator\venv\Scripts\python.exe "F:/programjia/PyCharm Community Edition 2023.1.3/plugins/python-ce/helpers/pydev/pydevd.py" --multiprocess --qt-support=auto --client 127.0.0.1 --port 58861 --file D:\codenew\course-exercise-in-mechanical-design\Code\caculation.py
-已连接到 pydev 调试器(内部版本号 231.9225.15)
+import sys; print('Python %s on %s' % (sys.version, sys.platform))
+C:\Users\Administrator\venv\Scripts\python.exe -X pycache_prefix=C:\Users\Administrator\AppData\Local\JetBrains\PyCharmCE2023.3\cpython-cache "F:/programjia/PyCharm Community Edition 2023.1.3/plugins/python-ce/helpers/pydev/pydevd.py" --multiprocess --qt-support=auto --client 127.0.0.1 --port 63339 --file D:\codenew\course-exercise-in-mechanical-design\Code\caculation.py
+已连接到 pydev 调试器(内部版本号 233.11799.298)
 -----------------
 Now,begin the total design
 我们的电机是什么
@@ -292,3 +293,6 @@ Now, begin the design of shaft 1.
 	估算轴的直径 d=18.36618537926532mm
 	考虑键槽的影响，扩大轴的直径
 	    轴上有 1 个键槽，直径增大5%
+	    则 d=20mm
+
+12月18日

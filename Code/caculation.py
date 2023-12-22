@@ -6,14 +6,14 @@ def total_design():
     print("\n-----------------")
     print("Now,begin the total design\n我们的电机是什么")
     print('Y100L2-4  1430转速3kw同步1500')#加点料FTyiming
-    #运输带1400n  速度1.55ms  卷筒直径2500mm
+    #运输带1400n  速度1.55ms  卷筒直径250mm
     #总效率n=带的 齿轮的 轴承的平方 联轴器的
     F=1400#measured in N
     v=1.55#measured in m/s
-    D=2.5#measured in m          2500mm=2.5m
+    D=0.25#measured in m          250mm=2.5m
     print('卷筒直径{}力{}转速{}'.format(D,F,v))
     nw=v/(D/2)/(2*pi)*60   #measured in r/min
-    nw=v*10*60/(D*pi) #我们的带速怎么那么算呢rpm多少转   r
+    nw=v*60/(D*pi) #我们的带速怎么那么算呢rpm多少转   r
     print('我们传输带的转速'+str(nw))
     Pw=F*v/1000/0.96  #P is the total output power(kW);预计需要的功率
 
@@ -67,7 +67,7 @@ def total_design():
 
     P1=Pd*eta_belt    #belt 带   轴一
     P2=P1*eta_gear*eta_rolling_bearing   #gear齿轮  滚动轴承  轴二
-    P3=P2*eta_coupler*eta_rolling_bearing   #coupler联轴器  滚动轴承 轴三
+    P3=P2*eta_coupler*eta_rolling_bearing   #coupler联轴器  滚动轴承工作轴了 轴三
     P4=P3*eta_coupler*eta_rolling_bearing**2     #工作机
     print("各轴的输入功率分别为：\n\t带P1={}kW,\n\tP2={}kW,\n\tP3={}kW,\n\t（没用上）P4={}kW".format(P1,P2,P3,P4))
     P=[Pd,P1,P2,P3,P4]
@@ -75,6 +75,8 @@ def total_design():
 
 
     #Calculate the torque of each roller
+    Td=9550*Pd/nm   #电机的转矩 但轴的
+    T11=Td*i1*n1
     T1=9550*P1/n1   #一轴
     T2=9550*P2/n2   #二轴
     T3=9550*P3/n3  #三轴

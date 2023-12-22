@@ -20,11 +20,11 @@ class coupling():
     def size_confirm(self):
         self.K_A=1.5    #工况系数老师查1.5   13-1
         self.T_ca=self.K_A*self.T
-        self.size='LT7#选40的孔'    
+        self.size= "'LT7#选40的孔因为我的轴才32最细段太大了'"
         self.T_avalible=6300
         self.n_avaliable=1800
-        self.d_min=80
-        self.d_max=110
+        self.d_min=40
+        self.d_max='不知道'
         print('确定联轴器型号')
         print('\t使用系数 K_A=',self.K_A)
         print('\t计算转矩 T_ca={} N·mm'.format(self.T_ca))

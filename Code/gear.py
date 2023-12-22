@@ -7,7 +7,7 @@ class gear():
     def __init__(self,P,n,i):
         gear.number+=1
         print("\n-----------------")
-        print("Now, begin the design of gear {}.\n".format(gear.number))
+        print("Now, begin the design of gear {}.\n我们的齿轮中心距小于135mm\n".format(gear.number))
         self.P=P
         self.n1=n
         self.i=i
@@ -22,13 +22,14 @@ class gear():
             --input torque T
             --transmission rate i
             --the operating condition
+            中心距0|5的倍数
         '''
         n1=n
         precision=7#variable precision represents the precision level.
         if gear.number==1:
-            z1=23
-            self.material={'小齿轮':{'牌号':'20Cr','热处理方法':'渗碳后淬火','齿面硬度':'58~62HRC','接触疲劳极限':1400,'弯曲疲劳极限':800},
-                     '大齿轮':{'牌号':'20Cr','热处理方法':'渗碳后淬火','齿面硬度':'58~62HRC','接触疲劳极限':1400,'弯曲疲劳极限':800}
+            z1=24#小齿轮齿数
+            self.material={'小齿轮':{'牌号':'45Cr','热处理方法':'渗碳后淬火','齿面硬度':'50HRC','接触疲劳极限':1400,'弯曲疲劳极限':800},
+                     '大齿轮':{'牌号':'45Cr','热处理方法':'渗碳后淬火','齿面硬度':'46HRC','接触疲劳极限':1400,'弯曲疲劳极限':800}
                    }
             #self.material={'小齿轮':{'牌号':'35SiMn','热处理方法':'调质','齿面硬度':'310~360HBW','接触疲劳极限':840,'弯曲疲劳极限':680},
              #         '大齿轮':{'牌号':'35SiMn','热处理方法':'调质','齿面硬度':'310~360HBW','接触疲劳极限':840,'弯曲疲劳极限':680}
@@ -38,10 +39,10 @@ class gear():
             self.material={'小齿轮':{'牌号':'20Cr2Ni4','热处理方法':'渗碳后淬火','齿面硬度':'58~62HRC','接触疲劳极限':1650,'弯曲疲劳极限':1050},
                       '大齿轮':{'牌号':'20Cr2Ni4','热处理方法':'渗碳后淬火','齿面硬度':'58~62HRC','接触疲劳极限':1650,'弯曲疲劳极限':1050}
                     }
-        z2=ceil(z1*i)
-        u=z2/z1
-        self.alpha=20
-        beta=14#variable beta represents the helix angel measured in degree.
+        z2=ceil(z1*i)   #向上取整
+        u=z2/z1           #齿数的比
+        self.alpha=20            #压力角
+        beta=14#variable beta represents the helix angel measured in degree.该函数定义了一个变量beta，并赋予了值14。该变量表示螺旋角度，单位为度数。
         
         print("\n1.选择齿轮类型、精度等级、材料及齿数")
         print('\t(1)选用标准斜齿圆柱齿轮传动')
@@ -58,9 +59,10 @@ class gear():
         print('\t   1)确定公式中各参数值')
         K_Ht=1.3#试选载荷系数
         T1=9.55*(10**6)*P/n1
-        self.alpha_t=atan(tan(radians(self.alpha))/cos(radians(beta)))
-        beta_b=atan(tan(radians(beta))*cos(self.alpha_t))
-        Z_H=sqrt(2*cos(beta_b)/cos(self.alpha_t)/sin(self.alpha_t))
+        self.alpha_t = atan(tan(radians(self.alpha)) / cos(radians(beta)))  # 计算alpha_t   用压力角和螺旋角
+        beta_b = atan(tan(radians(beta)) * cos(self.alpha_t))  # 计算beta_b
+        Z_H = sqrt(2 * cos(beta_b) / cos(self.alpha_t) / sin(self.alpha_t))  # 计算Z_H
+
         Z_E=189.8#查表得到材料的弹性影响系数
         h_an_star=1#齿高系数选1？？
         c_n_star=0.25

@@ -19,7 +19,7 @@ class key():
         if (key.num==1)&(self.type=='半圆普通平键'):
             self.b=8
             self.h=7
-            self.L=45
+            self.L=56
             # self.b=10
             # self.h=8
             # self.L=56

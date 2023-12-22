@@ -29,7 +29,7 @@ class shaft():
             self.tau_T_avaliable=40
             self.keyhole=1
         self.d0=self.A0*(self.P/self.n)**(1/3)
-        self.d=ceil(self.d0*(1+0.05*self.keyhole))   #扩大轴直径因为有键
+        self.d=ceil(self.d0*(1+(0.05*self.keyhole)))   #扩大轴直径因为有键
         print('对于第 {} 根轴'.format(shaft.num))    #a  e是15  4根  所以宽度
         print('\t取A_0={},[τ_T]={}MPa'.format(self.A0,self.tau_T_avaliable))
         print('\t估算轴的直径 d={}mm'.format(self.d0))

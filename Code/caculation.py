@@ -4,7 +4,7 @@ def total_design():
     '''
     '''
     print("\n-----------------")
-    print("Now,begin the total design\n我们的电机是什么")
+    print("Now,begin the total design\n我们的电机是")
     print('Y100L2-4  1430转速3kw同步1500')#加点料FTyiming
     #运输带1400n  速度1.55ms  卷筒直径250mm
     #总效率n=带的 齿轮的 轴承的平方 联轴器的

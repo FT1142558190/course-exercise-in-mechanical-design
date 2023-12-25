@@ -76,8 +76,8 @@ class belt():
             print("\t大于120°就算比较合理小带轮上的包角 α1 合适！")
         print('6.计算带的根数 z')
         print('\t(1)计算单根V带的额定功率 Pr')
-        self.P0=0.77#插值法得到 1.3816kW  内查法    基本额定功率 那我选个0.47kw  7-6
-        self.Delta_P0=0.09#插值法得到 1.1516kW       额定功率增量   0.05kw   7-7
+        self.P0=1.32#插值法得到 1.3816kW  内查法    基本额定功率 那我选个0.47kw  7-6
+        self.Delta_P0=0.17#   插值法得到 1.1516kW       额定功率增量   0.15kw   7-7
         self.K_alpha=0.95 #包角修真 0.95
         self.K_L=0.99#表8-2  0.99
         self.Pr=(self.P0+self.Delta_P0)*self.K_alpha*self.K_L

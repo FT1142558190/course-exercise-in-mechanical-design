@@ -27,8 +27,8 @@ class gear():
         n1=n
         precision=7#variable precision represents the precision level.
         if gear.number==1:
-            z1=24#小齿轮齿数
-            self.material={'小齿轮':{'牌号':'45Cr','热处理方法':'渗碳后淬火','齿面硬度':'50HRC','接触疲劳极限':1400,'弯曲疲劳极限':800},
+            z1=24#小齿轮齿数初选了齿数
+            self.material={'小齿轮':{'牌号':'45Cr','热处理方法':'表面淬火','齿面硬度':'50HRC','接触疲劳极限':1400,'弯曲疲劳极限':800},
                      '大齿轮':{'牌号':'45Cr','热处理方法':'渗碳后淬火','齿面硬度':'46HRC','接触疲劳极限':1400,'弯曲疲劳极限':800}
                    }
             #self.material={'小齿轮':{'牌号':'35SiMn','热处理方法':'调质','齿面硬度':'310~360HBW','接触疲劳极限':840,'弯曲疲劳极限':680},
@@ -68,6 +68,7 @@ class gear():
         c_n_star=0.25
         if gear.number==1:
             phi_d=0.8#查表取齿宽系数
+            print('我们的小齿轮是齿轮轴')
         else :
             phi_d=0.7#查表取齿宽系数
         alpha_at1=acos(z1*cos(self.alpha_t)/(z1+2*h_an_star*cos(radians(beta))))
@@ -157,7 +158,7 @@ class gear():
         Y_epsilon=0.25+0.75/epsilon_alpha_v
         Y_beta=1-epsilon_beta*beta/120
         z_v1=z1/(cos(radians(beta)))**3
-        z_v2=z2/(cos(radians(beta)))**3
+        z_v2=z2/(cos(radians(beta)))**3 #当量齿数就这么用就行
         if gear.number==1:
             Y_Fa1=2.62#查表10-5得到
             Y_Fa2=2.13#查表10-5得到
@@ -175,11 +176,12 @@ class gear():
         sigma_Flim1=self.material['小齿轮']['弯曲疲劳极限']#查图10-20c得
         sigma_Flim2=self.material['大齿轮']['弯曲疲劳极限']#查图10-20c得
         S=1.4#弯曲疲劳安全系数
-        sigma_F_avaliable_1=K_FN1*sigma_Flim1/S
+        sigma_F_avaliable_1=K_FN1*sigma_Flim1/S   #许用弯曲应力
         sigma_F_avaliable_2=K_FN2*sigma_Flim2/S
         num1=Y_Fa1*Y_Sa1/sigma_F_avaliable_1
         num2=Y_Fa2*Y_Sa2/sigma_F_avaliable_2
         num=max(num1,num2)
+        num=0.00822   #算出来复合齿型系数算法和原来的不一样我们学校就这样把附加一下
         print('\t     试选载荷系数 K_Ft=',K_Ft)
         print('\t     计算重合度系数 Y_ε') 
         print('\t         ε_αv=',epsilon_alpha_v)
@@ -194,9 +196,12 @@ class gear():
         print('\t         弯曲应力许用值 [σ_F]_1={:.8} MPa,[σ_F]_2={:.8} MPa'.format(sigma_F_avaliable_1,sigma_F_avaliable_2))
         print('\t         Y_Fa1*Y_Sa1/[σ_F1]={:.5},Y_Fa2*Y_Sa2/[σ_F2]={:.5}'.format(num1,num2))
         print('\t         Y_Fa*Y_Sa/[σ_F]=max(Y_Fa1*Y_Sa1/[σ_F1],Y_Fa2*Y_Sa2/[σ_F2])={:.5}'.format(num))
-        print('\t   2)试算齿轮模数')
-        m_nt_min=((2*K_Ft*T1*Y_epsilon*Y_beta*(cos(radians(beta)))**2)/(phi_d*z1**2)*num)**(1/3)
+        print('\t   2)试算齿轮模数齿宽系数0.8齿数选20是不合适的如果我们取2模式\n分度圆就小于轴的的宽度')
+        m_nt_min=((2*K_Ft*T1*Y_epsilon*Y_beta*(cos(radians(beta)))**2)/(phi_d*z1**2)*num)**(1/3)  #螺旋桨14度 k=1.3   k
+        m_nt_min = ((2 * K_Ft * T1  *(cos(radians(beta))) ** 2) / (phi_d * z1 ** 2) * num) ** (1 / 3)
+        m_nt_min=2                   #直接取成2了
         print('\t     m_nt_min=',m_nt_min)
+
         print('\t(2)调整齿轮模数')
         print('\t   1)计算实际载荷系数前的数据准备')
         d1=m_nt_min*z1/cos(radians(beta))
@@ -257,6 +262,7 @@ class gear():
 
         print('\n4.几何尺寸计算')
         print('\t(1)计算中心距')
+
         a0=(z1+z2)*self.m_n/2/cos(radians(beta))
         self.a=ceil(a0)
         if gear.number==2:

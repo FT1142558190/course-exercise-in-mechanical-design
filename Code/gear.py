@@ -57,7 +57,7 @@ class gear():
         print('\n2.按齿面接触疲劳强度设计')
         print('\t(1)由式(10-24)确定小齿轮分度圆直径')
         print('\t   1)确定公式中各参数值')
-        K_Ht=1.3#试选载荷系数
+        K_Ht=1.5#试选载荷系数
         T1=9.55*(10**6)*P/n1
         self.alpha_t = atan(tan(radians(self.alpha)) / cos(radians(beta)))  # 计算alpha_t   用压力角和螺旋角
         beta_b = atan(tan(radians(beta)) * cos(self.alpha_t))  # 计算beta_b

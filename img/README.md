@@ -33,7 +33,8 @@ CSDN 链接：https://blog.csdn.net/weixin_46191033/article/details/113738206
 ## 3. Deficiency
 
 由于是在进行课设的时候写的程序，时间仓促，有很多不足待改进，也有很多想法没有能够实现。如果大家看到了这篇，希望能够一起来改进这个程序。
-
+Because the program was written during the course design, the time was short, there were many deficiencies to be improved,
+and there were many ideas that could not be realized. If you read this, I hope to improve this program together.
 - 没有建立《课程设计》中涉及的国标数据库，在调用的时候，需要手动查表并输入；
 - 没有建立AutoCAD的接口，使自动绘图；
 - 不能进行优化设计；

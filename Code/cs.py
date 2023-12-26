@@ -1,21 +1,22 @@
 from math import pi,sin,cos,tan,atan,acos,sqrt,ceil,floor,radians,degrees
 
-z1=24
-z2=104
-beta=13
+z1=20
+z2=87
+beta=17
 m_n=2.0
-a0=(z1+z2)*m_n/2/cos(radians(beta))
+a0=(z1+z2)*m_n/(2*cos(radians(beta)))  #
+print("中心距{}".format(a0))
+a0=110
 print("实际中心距{}".format(a0))
-a0=131.36692579755413
-a0=135
-
-b=acos(radians((z1+z2)*m_n/2/a0))
 b=(z1+z2)*m_n/2/a0
+print("实际螺旋半径{}".format(b))
 b=degrees(acos(b))
 print("实际螺旋角{}".format(b))
 
-d1=m_n*z1/cos(b) #分度园1
-d2=m_n*z2/cos(b) #分度园2
+d1=m_n*z1/cos(b*pi/180) #分度园1
+print("分度园1  {}".format(d1))
+d2=m_n*z2/cos(b*pi/180) #分度园2
+print("分度园2  {}".format(d2))
 chikuang=0.8*d1
 chikuang=65#比轴要宽
 b2=chikuang
@@ -42,6 +43,8 @@ LD=65  #轴承到齿轮中心
 LX=34.5         #危险截面轴承中心到危险截面
 
 M=FZ*LD
+
+print(acos(0))
 
 
 

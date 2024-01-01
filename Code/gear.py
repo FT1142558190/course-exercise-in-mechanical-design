@@ -27,7 +27,7 @@ class gear():
         n1=n
         precision=7#variable precision represents the precision level.
         if gear.number==1:
-            z1=20#小齿轮齿数初选了齿数
+            z1=24#小齿轮齿数初选了齿数
             self.material={'小齿轮':{'牌号':'45Cr','热处理方法':'表面淬火','齿面硬度':'50HRC','接触疲劳极限':1400,'弯曲疲劳极限':800},
                      '大齿轮':{'牌号':'45Cr','热处理方法':'渗碳后淬火','齿面硬度':'46HRC','接触疲劳极限':1400,'弯曲疲劳极限':800}
                    }
